@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Big Dumb Finger</title>
+    <style type="text/css">
+        body {
+            margin: 20px;
+            font-family: arial, sans-serif;
+        }
+        div p {
+            font-size: 11px;
+            margin: 0;
+        }
+        div.draggable {
+            padding: 0;
+            border: 1px solid grey;
+            width: 400px;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .yui3-dd-proxy {
+            width: 250px;
+            height: 28px;
+            background-color: rgba(0, 116, 208, 0.8);
+            z-index: 100;
+        }
+
+        div.draggable strong.icon {
+          background:  url(http://l.yimg.com/a/i/us/sp/fn/default/full/draggers.gif) no-repeat center left;
+          overflow: hidden;
+          width:28px;
+          height: 28px;
+          display:block;
+          float:left;
+          margin-right: 3px;
+        }
+        
+        div.yui3-dd-dragging.draggable {
+            background-color: rgba(0, 116, 208, 0.8);
+            color: white;
+            z-index: 100;
+            width: 250px;
+        }
+
+    </style>
+
+    <script charset="utf-8" type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js&3.2.0/build/oop/oop-min.js&3.2.0/build/event-custom/event-custom-min.js&3.2.0/build/attribute/attribute-base-min.js&3.2.0/build/base/base-base-min.js"></script>
+    <script type="text/javascript" src="js/node-event-touch.js"></script>
+    <script type="text/javascript" src="js/touch-manager.js"></script>
+    <script type="text/javascript" src="js/synthetic-touch-events.js"></script>
+    <script type="text/javascript" src="js/dd-drag-offset.js"></script>
+    <script type="text/javascript" src="js/dd-touch.js"></script>
+    
+</head>
+<body>
+    <p><a href="bigdumbfinger.html">Big Dumb Finger #1</a> | <a href="bigdumbfinger-2.html">Big Dumb Finger #2</a> | <a href="bigdumbfinger-3.html">Big Dumb Finger #3</a> | <a href="bigdumbfinger-4.html">Big Dumb Finger #4</a></p>
+    <section>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p>
+        </div>
+    </section>
+    <script type="text/javascript">
+        YUI().use( "node", "event", "dd-proxy", "dd-drag-offset", "dd-touch", function(Y) {
+            var draggables = Y.all("div.draggable");
+            draggables.each(function(n) {
+              var drag = new Y.DD.Drag({
+                    node: n, 
+                    startCentered: true, 
+                    offsetNode: true, 
+                    groups: []
+
+                }).plug( Y.Plugin.DDTouch, { 
+                    invalidTouchHandles: [],
+                        offsetXY: [0, 0],
+                        touchTimeThresh: 250
+    
+                }).plug( Y.Plugin.DDDragOffset, {
+                    offsetXY: [0.05, 0.5],
+                    touchOffsetXY: [0.05, 0.5]
+                })/*.plug( Y.Plugin.DDProxy, { 
+                    hideOnEnd: false, 
+                    positionProxy: true, 
+                    resizeFrame: false, 
+                    borderStyle:"1px solid rgb(170, 170, 170)",
+                    moveOnEnd: false
+
+                })*/;
+                
+                
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scrolling</title>
+    <style type="text/css">
+        body {
+            margin: 20px;
+            font-family: arial, sans-serif;
+        }
+        div p {
+            font-size: 11px;
+            margin: 0;
+        }
+        div.draggable {
+            padding: 0;
+            border: 1px solid grey;
+            width: 400px;
+            background: white;
+            overflow: hidden;
+            height: 28px;
+            position: relative;
+        }
+        
+        div.draggable em {
+            display: block;
+            height: 28px;
+            line-height: 30px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-style: normal;
+        }
+        
+        div.draggable em strong {
+            display: inline-block;
+            line-height: 30px;
+            border-left: 1px solid #aaa;
+            font-weight: normal;
+            padding: 0 .75em;
+        }
+        
+        .yui3-dd-proxy {
+            width: 250px;
+            height: 28px;
+            background-color: rgba(0, 116, 208, 0.8);
+            z-index: 100;
+            color: white;
+            overflow:hidden;
+        }
+
+        div.yui3-dd-draggable strong.icon,
+        .yui3-dd-proxy strong.icon {
+          background:  url(http://l.yimg.com/a/i/us/sp/fn/default/full/draggers.gif) no-repeat center left;
+          overflow: hidden;
+          width:28px;
+          height: 28px;
+          display:block;
+          float:left;
+          margin-right: 3px;
+        }
+        
+        div.yui3-dd-dragging.draggable {
+            opacity: 0.6;
+        }
+        
+        #animation-thing {
+            background: black;
+            width: 200px;
+            height: 200px;
+            color: white;
+            margin: 10px;
+        }
+        
+        #animation-thing.animate {
+	        -webkit-animation-name: accelanim;
+	        -webkit-animation-duration: 1s;
+	        opacity: 0;
+        }
+
+	    @-webkit-keyframes accelanim  {
+	        from {
+	            -webkit-transform: scale(1);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: scale(0);
+	            opacity: 0;
+	        }
+	    }
+
+    </style>
+
+    <script charset="utf-8" type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js&3.2.0/build/oop/oop-min.js&3.2.0/build/event-custom/event-custom-min.js&3.2.0/build/attribute/attribute-base-min.js&3.2.0/build/base/base-base-min.js"></script>
+    <script type="text/javascript" src="js/node-event-touch.js"></script>
+    <script type="text/javascript" src="js/touch-manager.js"></script>
+    <script type="text/javascript" src="js/synthetic-touch-events.js"></script>
+    <script type="text/javascript" src="js/dd-drag-offset.js"></script>
+    <script type="text/javascript" src="js/dd-touch-bad.js"></script>
+    
+</head>
+<body>
+    <p><a href="scrolling.html">Scrolling #1</a> | <a href="scrolling-2.html">Scrolling #2</a> | <a href="scrolling-3.html">Scrolling #3</a></p>
+    <section>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p><em> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></em>
+        </div>
+        <div class="proxy-content">
+            <p>This is some content for the proxy.</p>
+        </div>
+
+
+    </section>
+    <script type="text/javascript">
+        YUI().use( "node", "event","io", "dd-proxy", "dd-drag-offset", "dd-touch", "anim", function(Y) {
+            var dragCreator = {
+                makeRowDraggable: function(draggable) {
+            
+                  var drag = new Y.DD.Drag({
+                        node: draggable, 
+                        startCentered: true, 
+                        offsetNode: true, 
+                        groups: []
+    
+                    }).plug( Y.Plugin.DDTouch, { 
+                        invalidTouchHandles: ["em"],
+                            offsetXY: [0, 0],
+                            touchTimeThresh: 250
+        
+                    }).plug( Y.Plugin.DDDragOffset, {
+                        offsetXY: [0.05, 0.5],
+                        touchOffsetXY: [0.35, 0.5]
+                    }).plug( Y.Plugin.DDProxy, { 
+                        hideOnEnd: true, 
+                        positionProxy: true, 
+                        resizeFrame: false, 
+                        borderStyle:"1px solid rgb(170, 170, 170)",
+                        moveOnEnd: false
+    
+                    });
+                    
+                    drag.on("drag:start", function(e) {
+                        var n = this.get("node");
+                        var p = this.get("dragNode");
+                        var html = n.all("p, strong.icon");
+                        var dragger = Y.Node.create("<div class='dragger'><\/div>");
+                        html.each(function(para) {
+                            dragger.append(para.cloneNode(true));
+                        });
+                        var oldPc = p.get("firstChild");
+                        if(oldPc) { 
+                            oldPc.remove();
+                        }
+                        p.append(dragger);
+                    });
+    
+                    drag.on("drag:end", function(e) {
+                        var p = this.get("dragNode");
+                    });
+                
+                }
+            }
+
+            var draggables = Y.all("div.draggable");
+            draggables.each(function(n) {
+                Y.later(50, dragCreator, dragCreator.makeRowDraggable, n); 
+            });
+  
+        });
+    </script>
+</body>
+</html>

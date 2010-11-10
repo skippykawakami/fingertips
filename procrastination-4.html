@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Procrastination</title>
+    <style type="text/css">
+        body {
+            margin: 20px;
+            font-family: arial, sans-serif;
+        }
+        div p {
+            font-size: 11px;
+            margin: 0;
+        }
+        div.draggable {
+            padding: 0;
+            border: 1px solid grey;
+            width: 400px;
+            background: white;
+            overflow: hidden;
+            height: 28px;
+        }
+        
+        .yui3-dd-proxy {
+            width: 250px;
+            height: 28px;
+            background-color: rgba(0, 116, 208, 0.8);
+            z-index: 100;
+            color: white;
+            overflow:hidden;
+        }
+
+        .drag-delegate div.draggable strong.icon,
+        div.yui3-dd-draggable strong.icon,
+        .yui3-dd-proxy strong.icon {
+          background:  url(http://l.yimg.com/a/i/us/sp/fn/default/full/draggers.gif) no-repeat center left;
+          overflow: hidden;
+          width:28px;
+          height: 28px;
+          display:block;
+          float:left;
+          margin-right: 3px;
+        }
+        
+        div.yui3-dd-dragging.draggable {
+            opacity: 0.6;
+        }
+        
+        #animation-thing {
+            background: black;
+            width: 200px;
+            height: 200px;
+            color: white;
+            margin: 10px;
+        }
+        
+        #animation-thing.animate {
+	        -webkit-animation-name: accelanim;
+	        -webkit-animation-duration: 1s;
+	        opacity: 0;
+        }
+
+	    @-webkit-keyframes accelanim  {
+	        from {
+	            -webkit-transform: scale(1);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: scale(0);
+	            opacity: 0;
+	        }
+	    }
+
+    </style>
+
+    <script charset="utf-8" type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js&3.2.0/build/oop/oop-min.js&3.2.0/build/event-custom/event-custom-min.js&3.2.0/build/attribute/attribute-base-min.js&3.2.0/build/base/base-base-min.js"></script>
+    <script type="text/javascript" src="js/node-event-touch.js"></script>
+    <script type="text/javascript" src="js/touch-manager.js"></script>
+    <script type="text/javascript" src="js/synthetic-touch-events.js"></script>
+    <script type="text/javascript" src="js/dd-drag-offset.js"></script>
+    <script type="text/javascript" src="js/dd-touch.js"></script>
+    
+</head>
+<body>
+    <p><a href="procrastination.html">Procrastination #1</a> | <a href="procrastination-2.html">Procrastination #2</a> | <a href="procrastination-3.html">Procrastination #3</a> | <a href="procrastination-4.html">Procrastination #4</a></p>
+        <div id="animation-thing">
+            I'm going to do some stuff
+        </div>
+    <section id="draggable-items">
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Kevin Kolb</p>
+            <p>(Phi - QB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Vincent Jackson</p>
+            <p>(SD - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Mike Sims-Walker</p>
+            <p>(Jac - WR)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>Rashard Mendenhall</p>
+            <p>(Pit - RB)</p>
+        </div>
+        <div class="draggable">
+            <strong class="icon"></strong>
+            <p>DeAngelo Williams</p>
+            <p>(Car - RB)</p>
+        </div>
+        <div class="proxy-content">
+            <p>This is some content for the proxy.</p>
+        </div>
+
+
+    </section>
+    <script type="text/javascript">
+        YUI().use( "node", "event","io", "dd-proxy", "dd-delegate", "dd-drag-offset", "dd-touch", "anim", function(Y) {
+            var dragCreator = {
+                delegateDrags: function() {
+            
+                  var drag = new Y.DD.Delegate({
+                        cont: "#draggable-items",
+                        nodes: ".draggable",
+                        target: false,
+                        startCentered: true, 
+                        offsetNode: true, 
+    
+                    });
+                    
+                    drag.dd.plug( Y.Plugin.DDTouch, { 
+                        invalidTouchHandles: [],
+                            offsetXY: [0, 0],
+                            touchTimeThresh: 250
+        
+                    }).plug( Y.Plugin.DDDragOffset, {
+                        offsetXY: [0.05, 0.5],
+                        touchOffsetXY: [0.35, 0.5]
+                    }).plug( Y.Plugin.DDProxy, { 
+                        hideOnEnd: true, 
+                        positionProxy: true, 
+                        resizeFrame: false, 
+                        borderStyle:"1px solid rgb(170, 170, 170)",
+                        moveOnEnd: false
+    
+                    });
+                    
+                    drag.on("drag:start", function(e) {
+                        Y.log("Starting Drag right now");
+                        var n = e.target.get("node");
+                        var p = e.target.get("dragNode");
+                        var html = n.get("innerHTML");
+                        var newContent = Y.one("div.proxy-content p");
+                        newContent.append("!");
+                        var dragger = Y.Node.create("<div class='dragger'>" + html + newContent.get("innerHTML") + "</div>");
+                        var oldPc = p.get("firstChild");
+                        if(oldPc) { 
+                            oldPc.remove();
+                        }
+                        p.append(dragger);
+                        p.setStyle("width", "300px");
+                        p.setStyle("height", "30px");
+                        Y.log("sending IO request");
+                        Y.log("Finishing Drag right now");
+                    });
+    
+                    drag.on("drag:end", function(e) {
+                        var p = e.target.get("dragNode");
+                        p.setStyle("width", "250px");
+                        p.setStyle("height", "28px");
+                    });
+                    
+                    Y.one("#draggable-items").addClass("drag-delegate");
+                }
+            }
+            var animThing = Y.one("#animation-thing");
+            var anim = new Y.Anim({
+                node: animThing,
+                duration: 2,
+                to: {
+                    'width': '400px',
+                    'height': '400px',
+                    'opacity': 0.25
+                }
+            });
+            animThing.addClass("animate");
+            dragCreator.delegateDrags();
+  
+        });
+    </script>
+</body>
+</html>

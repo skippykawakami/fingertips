@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = "viewport" content = "user-scalable = no, maximum-scale = 1, minimum-scale = 1">
+	<title>Super Sexy iPad Animation</title>
+	<style type="text/css">
+	    body {
+	        font-family: helvetica, sans-serif;
+	        background: white;
+	    }
+
+	    section {
+	        display: block;
+	        position: relative;
+	        margin: 10px;
+	        height: 250px;
+	        text-align: center;
+	    }
+
+
+	    div {
+	        width: 200px;
+	        height: 200px;
+	        background: rgb(0, 0, 0);
+	        text-align: center;
+	        color: white;
+	        font-weight: bold;
+	        margin: 10px;
+	        overflow: hidden;
+	        display: inline-block;
+	        padding: 5px;
+	        -webkit-box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.6);
+	    }
+	    
+	    
+	    .css-animation.animate {
+	        -webkit-animation-name: cssanim;
+	        -webkit-animation-duration: 0.5s;
+	        -webkit-animation-iteration-count: 1;
+	        opacity: 0;
+	    }
+	    
+	    @-webkit-keyframes cssanim  {
+	        from {
+	            width: 200px;
+	            height: 200px;
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            width: 800px;
+	            height: 800px;
+	            opacity: 0;
+	        }
+	    }
+
+
+	    .css-accelerated.animate {
+	        -webkit-animation-duration: 2s;
+	        -webkit-animation-iteration-count: 1;
+	        -webkit-transform-origin: 0 0;
+	        opacity: 0;
+	    }
+
+	    .rotate.css-accelerated.animate {
+	        -webkit-animation-name: rotateanim;
+	        -webkit-transform-origin: 50% 50%;
+        }
+
+
+	    .skew.css-accelerated.animate {
+	        -webkit-animation-name: skewanim;
+	        -webkit-transform-origin: 50% 50%;
+        }
+
+	    .translate.css-accelerated.animate {
+	        -webkit-animation-name: translateanim;
+        }
+
+	    .scale-3d.css-accelerated.animate {
+	        -webkit-animation-name: scale3danim;
+	        -webkit-transform-origin: 0 50%;
+        }
+
+	    .translate-3d.css-accelerated.animate {
+	        -webkit-animation-name: translate3danim;
+	        -webkit-transform-origin: 50% 50%;
+        }
+
+	    .rotate-3d.css-accelerated.animate {
+	        -webkit-animation-name: rotate3danim;
+	        -webkit-transform-origin: 50% 50%;
+        }
+
+	    .crazy.css-accelerated.animate {
+	        -webkit-animation-name: crazyanim;
+	        -webkit-transform-origin: 50% 50%;
+	        -webkit-animation-iteration-count: 2;
+	        opacity: 1;
+        }
+
+	    
+	    @-webkit-keyframes accelanim  {
+	        from {
+	            -webkit-transform: scale(1);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: scale(4);
+	            opacity: 0;
+	        }
+	    }
+	    
+	    @-webkit-keyframes rotateanim {
+	        from {
+	            -webkit-transform: rotate(0deg);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: rotate(720deg);
+	            opacity: 0;
+	        }
+	    }
+
+	    @-webkit-keyframes skewanim {
+	        from {
+	            -webkit-transform: skew(0, 0);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: skew(50deg, 80deg);
+	            opacity: 0;
+	        }
+	    }
+
+
+	    @-webkit-keyframes translateanim {
+	        from {
+	            -webkit-transform: translate(0, 0);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: translate(300px, 150px);
+	            opacity: 0;
+	        }
+	    }
+
+	    
+	    @-webkit-keyframes scale3danim {
+	        from {
+	            -webkit-transform: perspective(600) scale3d(1, 1, 0);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: perspective(300) scale3d(0.5, 1.5, 1.5);
+	            opacity: 0;
+	        }
+	    }
+
+	    @-webkit-keyframes translate3danim {
+	        from {
+	            -webkit-transform: perspective(600) translate3d(0, 0, 0);
+	            opacity: 1;
+	        }
+	        
+	        40% {
+	            -webkit-transform: perspective(600) translate3d(300px, 60px, -100px);
+	            opacity: 0.8;
+	        }
+
+	        70% {
+	            -webkit-transform: perspective(600) translate3d(260px, 90px, -120px);
+	            opacity: 0.7;
+	        }
+
+
+	        to {
+	            -webkit-transform: perspective(600) translate3d(200px, 150px, -300px);
+	            opacity: 0;
+	        }
+	    }
+
+	    @-webkit-keyframes rotate3danim {
+	        from {
+	            -webkit-transform: perspective(600) rotateX(0deg);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: perspective(600) rotateX(180deg);
+	            opacity: 0;
+	        }
+	    }
+
+	    @-webkit-keyframes crazyanim {
+	        from {
+	            -webkit-transform: perspective(600) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0, 0, 0) scale(1);
+	            background-color: rgb(0, 0, 0);
+	            opacity: 1;
+	        }
+
+	        10% {
+	            -webkit-transform: perspective(600) rotateX(20deg) rotateY(48deg) rotateZ(-90deg) translate3d(50px, -10px, 50px) scale(1.5);
+	            background-color: rgb(0, 0, 255);
+	            opacity: 0.75;
+	        }
+
+	        25% {
+	            -webkit-transform: perspective(600) rotateX(30deg) rotateY(90deg) rotateZ(-180deg) translate3d(80px, 40px, 70px) scale(0.75);
+	            background-color: rgb(0, 255, 0);
+	            opacity: 0.5;
+	        }
+	        45% {
+	            -webkit-transform: perspective(600) rotateX(-15deg) rotateY(60deg) rotateZ(-360deg) translate3d(120px, 60px, 45px) scale(0.25);
+	            background-color: rgb(255, 0, 0);
+	            opacity: 0.6;
+	        }
+	        75% {
+	            -webkit-transform: perspective(600) rotateX(-0deg) rotateY(0deg) rotateZ(-720deg) translate3d(60px, 90px, -45px) scale(1.2);
+	            background-color: rgb(255, 255, 0);
+
+	            opacity: .25;
+	        }
+	        
+	        to {
+	            -webkit-transform: perspective(600) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0, 0, 0) scale(1);
+	            background-color: rgb(0, 0, 0);
+	            opacity: 1;
+	        }
+	    }
+
+
+
+	</style>
+	
+<script charset="utf-8" type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js&3.2.0/build/oop/oop-min.js&3.2.0/build/event-custom/event-custom-min.js&3.2.0/build/attribute/attribute-base-min.js&3.2.0/build/base/base-base-min.js"></script>
+<script type="text/javascript" src="js/node-event-touch.js"></script>
+<script type="text/javascript">
+    YUI().use("anim", "node", "event", function(Y) {
+        var jsAnimate = function(e) {
+            var n = this;
+            var anim = new Y.Anim({
+                node: n,
+                duration: 1.0,
+                to: {
+                    'width': '800px',
+                    'height': '800px',
+                    'opacity': 0
+                }
+            });
+            anim.run();
+            e.halt();
+        };            
+        var cssAnimate = function(e) {
+            this.addClass("animate");
+            e.halt();
+        }
+
+        Y.on("touchstart", jsAnimate,  "div.traditional");
+        Y.on("touchstart", cssAnimate, "div.css-animation, div.css-accelerated");
+
+        Y.on("click", jsAnimate,  "div.traditional");
+        Y.on("click", cssAnimate, "div.css-animation, div.css-accelerated");
+
+
+    });
+</script>
+
+</head>
+<body>
+    <p><a href="animation.html">Animation #1</a> | <a href="animation-2.html">Animation #2</a> | <a href="animation-3.html">Animation #3</a> | <a href="animation-4.html">Animation #4</a> | <a href="animation-5.html">Animation #5</a> | <a href="animation-6.html">Animation #6</a></p>
+    <section>
+        <div class="skew css-accelerated">Skew</div>
+        <div class="translate css-accelerated">Translate</div>
+        <div class="rotate css-accelerated">Rotate</div>
+    </section>
+    <section>
+        <div class="scale-3d css-accelerated">Scale 3-D</div>
+        <div class="translate-3d css-accelerated">Translate 3-D</div>
+        <div class="rotate-3d css-accelerated">Rotate 3-D</div>
+    </section>
+    <section>
+        <div class="crazy css-accelerated">All of the above</div>
+    </section>
+
+</body>
+</html>

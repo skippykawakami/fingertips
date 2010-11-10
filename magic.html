@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Magic</title>
+    <style type="text/css">
+        body {
+            background: black;
+            color: white;
+            font-family: "HelveticaNeue-UltraLight", "HelveticaNeue", helvetica, sans-serif;
+        }
+        
+        h1 {
+            position: absolute;
+            top: 45%;
+            font-size: 220%;
+            font-weight: normal;
+            left: 0;
+            right: 0;
+            text-align: center;
+            opacity: 0.99;
+            letter-spacing: 1px;
+        }
+        
+        #subject {
+            display: inline-block;
+            text-align: right;
+            width: 6em;
+            font-family: "HelveticaNeue-Light", helvetica, sans-serif;
+            color: yellow;
+        }
+        
+        #it {
+            display: inline-block;
+            width: 1.7em;
+            text-align: center;
+            font-family: "HelveticaNeue-Light", helvetica, sans-serif;
+            color: yellow;
+        }
+        
+        h1 .animate {
+            -webkit-animation-name: flipword;
+            -webkit-transform-origin: 50% 50%;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-duration: 0.35s;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-timing-function: ease-out;
+            -webkit-backface-visibility: hidden;
+            -webkit-animation-fill-mode: forwards;
+            
+            opacity: 0;
+        }
+        
+        h1 .animate-out {
+            -webkit-animation-name: flipword-out;
+            -webkit-transform-origin: 50% 50%;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-duration: 0.35s;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-timing-function: ease-in;
+            -webkit-backface-visibility: hidden;
+        }
+    
+        
+    
+        @-webkit-keyframes flipword  {
+            from {
+                -webkit-transform: perspective(300) rotateX(0);
+                opacity: 1;
+            }
+            
+            85% {
+                opacity: 1;
+                -webkit-transform: perspective(300) rotateX(-76.5deg);
+            }
+            
+            to {
+                -webkit-transform: perspective(300) rotateX(-90deg);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes flipword-out  {
+            from {
+                -webkit-transform: perspective(300) rotateX(90deg);
+                opacity: 0;
+            }
+            
+            15% {
+                -webkit-transform: perspective(300) rotateX(76.5deg);
+                opacity: 1;
+            }
+    
+            
+            to {
+                -webkit-transform: perspective(300) rotateX(0deg);
+                opacity: 1;
+            }
+        }
+    
+    </style>
+<script charset="utf-8" type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js&3.2.0/build/oop/oop-min.js&3.2.0/build/event-custom/event-custom-min.js&3.2.0/build/attribute/attribute-base-min.js&3.2.0/build/base/base-base-min.js"></script>
+<script type="text/javascript" src="js/node-event-touch.js"></script>
+<script type="text/javascript" src="js/css-animation-events.js"></script>
+<script type="text/javascript">
+    YUI().use("anim", "node", "event", "css-animation-events", function(Y) {
+        var cssAnimate = function(e) {
+            this.addClass("animate");
+            e.halt();
+        }
+        
+        var elCounts = {
+            "subject": 0,
+            "it": 0
+        }
+        
+        var elTexts = {
+            "subject": ["The iPad", "YUI", "The Web", "Right Now"],
+            "it": ["it", "you", "we"]
+        }
+        
+        function replaceText(el) {
+            var id=el.get("id"), text = elTexts[id];
+            elCounts[id]++;
+            if(elCounts[id] >= text.length) {
+                elCounts[id] = 0;
+            }
+            el.setContent( text[ elCounts[id] ] );
+        }
+
+        Y.on("touchstart", cssAnimate, "#subject, #it");
+        Y.on("click", cssAnimate, "#subject, #it");
+        
+        Y.on("webkitAnimationEnd", function(e) {
+                var evt = e._event;
+                if(evt.animationName == "flipword") {
+                    this.replaceClass("animate", "animate-out");
+                    replaceText(this);
+                }
+                else {
+                    this.removeClass("animate-out");
+                }
+        }, "#subject, #it");
+
+
+    });
+</script>
+</head>
+<body>
+    <h1><span id="subject">The iPad</span> is magical because of what <span id="it">it</span> can do.</h1>
+</body>
+
+</html>

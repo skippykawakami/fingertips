@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = "viewport" content = "user-scalable = no, maximum-scale = 1, minimum-scale = 1">
+	<title>Super Sexy iPad Animation</title>
+	<style type="text/css">
+	    body {
+	        font-family: helvetica, sans-serif;
+	        background: white;
+	    }
+
+	    section {
+	        display: block;
+	        position: relative;
+	        margin: 10px;
+	        height: 250px;
+	    }
+
+
+	    div {
+	        width: 200px;
+	        height: 200px;
+	        background: rgb(0, 0, 0);
+	        text-align: center;
+	        color: white;
+	        font-weight: bold;
+	        margin: 10px;
+	        overflow: hidden;
+	        position: absolute;
+	        padding: 5px;
+	    }
+	    
+	    .traditional {
+	        left: 0;
+	        top: 0;
+	    }
+	    
+	    .css-animation {
+	        left: 0;
+	        top: 0;
+	    }
+	    
+	    .css-accelerated {
+	        left: 500px;
+	        top: 0;
+	    }
+	    
+	    .css-animation.animate {
+	        -webkit-animation-name: cssanim;
+	        -webkit-animation-duration: 0.5s;
+	        -webkit-animation-iteration-count: 1;
+	        opacity: 0;
+	    }
+	    
+	    @-webkit-keyframes cssanim  {
+	        from {
+	            width: 200px;
+	            height: 200px;
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            width: 800px;
+	            height: 800px;
+	            opacity: 0;
+	        }
+	    }
+
+
+	    .css-accelerated.animate {
+	        -webkit-animation-name: accelanim;
+	        -webkit-animation-duration: 1s;
+	        -webkit-animation-iteration-count: 1;
+	        -webkit-transform-origin: 0 0;
+	        opacity: 0;
+	    }
+	    
+	    @-webkit-keyframes accelanim  {
+	        from {
+	            -webkit-transform: scale(1);
+	            opacity: 1;
+	        }
+	        
+	        to {
+	            -webkit-transform: scale(4);
+	            opacity: 0;
+	        }
+	    }
+	    
+	</style>
+	
+<script charset="utf-8" type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js&3.2.0/build/oop/oop-min.js&3.2.0/build/event-custom/event-custom-min.js&3.2.0/build/attribute/attribute-base-min.js&3.2.0/build/base/base-base-min.js"></script>
+<script type="text/javascript" src="js/node-event-touch.js"></script>
+<script type="text/javascript">
+    YUI().use("anim", "node", "event", function(Y) {
+        var jsAnimate = function(e) {
+            var n = this;
+            var anim = new Y.Anim({
+                node: n,
+                duration: 1.0,
+                to: {
+                    'width': '800px',
+                    'height': '800px',
+                    'opacity': 0
+                }
+            });
+            anim.run();
+            e.halt();
+        };            
+        var cssAnimate = function(e) {
+            this.addClass("animate");
+            e.halt();
+        }
+
+        Y.on("touchstart", jsAnimate,  "div.traditional");
+        Y.on("touchstart", cssAnimate, "div.css-animation, div.css-accelerated");
+
+        Y.on("click", jsAnimate,  "div.traditional");
+        Y.on("click", cssAnimate, "div.css-animation, div.css-accelerated");
+
+
+    });
+</script>
+
+</head>
+<body>
+    <p><a href="animation.html">Animation #1</a> | <a href="animation-2.html">Animation #2</a> | <a href="animation-3.html">Animation #3</a> | <a href="animation-4.html">Animation #4</a> | <a href="animation-5.html">Animation #5</a> | <a href="animation-6.html">Animation #6</a></p>
+    <section>
+        <div class="css-animation">CSS Animation</div>
+    </section>
+
+</body>
+</html>
